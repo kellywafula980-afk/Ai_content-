@@ -1,0 +1,35 @@
+{% extends 'studio/base.html' %}
+
+{% block content %}
+<div class="text-center" style="padding: 60px 20px;">
+    <h1 style="font-size: 48px;">🚀 AI Content Studio</h1>
+    <p style="font-size: 20px; color: #666; margin: 20px 0;">
+        Generate Blog Posts, Social Media Captions, and More with AI
+    </p>
+    
+    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin: 40px 0;">
+        <div class="card" style="width: 200px;">
+            <h3>📝 Blog Posts</h3>
+            <p>500-800 words</p>
+        </div>
+        <div class="card" style="width: 200px;">
+            <h3>📱 Social Media</h3>
+            <p>5 captions</p>
+        </div>
+        <div class="card" style="width: 200px;">
+            <h3>📧 Emails</h3>
+            <p>Professional</p>
+        </div>
+        <div class="card" style="width: 200px;">
+            <h3>🔍 SEO</h3>
+            <p>Meta, keywords</p>
+        </div>
+    </div>
+    
+    <div class="mt-20">
+        <a href="{% url 'register' %}" class="btn" style="font-size: 18px; padding: 15px 40px;">Get Started Free →</a>
+    </div>
+    
+    <p style="color: #888; margin-top: 20px;">5 free credits included 🎁</p>
+</div>
+{% endblock %}

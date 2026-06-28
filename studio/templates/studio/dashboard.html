@@ -1,0 +1,25 @@
+{% extends 'studio/base.html' %}
+
+{% block content %}
+<div style="max-width: 800px; margin: 0 auto; padding: 20px;">
+    <h1>📊 Dashboard</h1>
+    
+    <div class="card" style="background: #f0f8ff;">
+        <h3>💰 Your Credits: <span style="color: #007bff; font-size: 24px;">{{ credits }}</span></h3>
+        <a href="{% url 'buy_credits' %}" class="btn" style="background: #28a745;">Buy More Credits</a>
+        <a href="{% url 'generate' %}" class="btn" style="margin-left: 10px;">Generate Content</a>
+    </div>
+    
+    <h2>📄 Recent Content</h2>
+    {% for content in contents %}
+        <div class="card">
+            <strong>{{ content.get_content_type_display }}</strong>
+            <p style="color: #666; margin: 5px 0;">{{ content.prompt|truncatechars:100 }}</p>
+            <small style="color: #888;">{{ content.created_at|date:"M d, Y" }} • {{ content.word_count }} words</small>
+            <a href="{% url 'content_detail' content.id %}" style="margin-left: 10px; color: #007bff;">View</a>
+        </div>
+    {% empty %}
+        <p style="color: #888;">No content generated yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}

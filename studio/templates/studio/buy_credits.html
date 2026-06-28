@@ -1,0 +1,48 @@
+{% extends 'studio/base.html' %}
+
+{% block content %}
+<div style="text-align: center; padding: 40px 20px;">
+    <h1>💳 Buy Credits</h1>
+    <p style="font-size: 18px; color: #666;">Generate more content with your credits</p>
+    
+    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin: 40px 0;">
+        <div class="card" style="width: 250px;">
+            <h3>Starter</h3>
+            <p style="font-size: 36px; color: #4a90d9;">$9.99</p>
+            <p>20 Credits</p>
+            <p style="color: #888;">$0.50 per generation</p>
+            <form method="post" action="{% url 'create_checkout_session' %}">
+                {% csrf_token %}
+                <input type="hidden" name="plan" value="starter">
+                <button type="submit" class="btn">Buy Now</button>
+            </form>
+        </div>
+        
+        <div class="card" style="width: 250px; border: 2px solid #4a90d9;">
+            <h3>🔥 Pro</h3>
+            <p style="font-size: 36px; color: #4a90d9;">$19.99</p>
+            <p>50 Credits</p>
+            <p style="color: #888;">$0.40 per generation</p>
+            <form method="post" action="{% url 'create_checkout_session' %}">
+                {% csrf_token %}
+                <input type="hidden" name="plan" value="pro">
+                <button type="submit" class="btn">Buy Now</button>
+            </form>
+        </div>
+        
+        <div class="card" style="width: 250px;">
+            <h3>🚀 Business</h3>
+            <p style="font-size: 36px; color: #4a90d9;">$49.99</p>
+            <p>200 Credits</p>
+            <p style="color: #888;">$0.25 per generation</p>
+            <form method="post" action="{% url 'create_checkout_session' %}">
+                {% csrf_token %}
+                <input type="hidden" name="plan" value="business">
+                <button type="submit" class="btn">Buy Now</button>
+            </form>
+        </div>
+    </div>
+    
+    <p style="color: #888; margin-top: 20px;">💰 Secure payments powered by Stripe</p>
+</div>
+{% endblock %}

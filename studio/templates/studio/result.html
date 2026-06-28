@@ -1,0 +1,26 @@
+{% extends 'studio/base.html' %}
+
+{% block content %}
+<div style="max-width: 800px; margin: 0 auto; padding: 20px;">
+    <h1>✅ Content Generated!</h1>
+    
+    <div class="card" style="white-space: pre-wrap; font-size: 16px; line-height: 1.6;">
+        {{ generated_text }}
+    </div>
+    
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <button onclick="copyContent()" class="btn" style="background: #28a745;">📋 Copy</button>
+        <a href="{% url 'generate' %}" class="btn">🔄 Generate More</a>
+        <a href="{% url 'dashboard' %}" class="btn" style="background: #6c757d;">📊 Dashboard</a>
+    </div>
+</div>
+
+<script>
+function copyContent() {
+    let text = document.querySelector('.card').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        alert('✅ Content copied to clipboard!');
+    });
+}
+</script>
+{% endblock %}
